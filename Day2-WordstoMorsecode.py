@@ -75,5 +75,6 @@ def words_to_morsecode(user_input):
     user_input = user_input.replace(' ', '/ ')
     return user_input
 
+
 if __name__ == '__main__':
     main()
