@@ -1,0 +1,19 @@
+import random
+
+# Name of the file to read in!
+WORD_LIST = ['Book', 'Computer', 'Lamp', 'Desk', 'Mirror', 'Vase', 'Pictures', 'Pens', 'Notebooks', 'Phone', 'Paper']
+
+def main():
+
+    while True:
+        list = WORD_LIST
+        words_list = []
+        for object in list:
+            words_list.append(object) 
+        word = random.choice(words_list) # Picks a word from 'words_list'
+        print("Your word is: " + word) # Tells the user the word s/he has to describe
+        input("Press enter once the word has been guessed") # Moves on to the next word 
+        print() # Blank line
+
+if __name__ == '__main__':
+    main()
