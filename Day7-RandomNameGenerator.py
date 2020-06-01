@@ -7,7 +7,7 @@ def main():
     """
     name_list = [] # Starts off as an empty list as the user hasn't inputted any names
     while True: # While the user hasn't pressed 'enter'
-        name = input("Add name here. Press the space bar when done adding: ")
+        name = input("Add name here. Press 'enter' when done adding: ")
         if name == '': 
             break
         name_list.append(name) # The names the user added will be put in the empty list
