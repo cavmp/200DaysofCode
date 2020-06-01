@@ -16,7 +16,7 @@ def main():
     for i in range(len(name_list)):
         random_name_generator = random.choice(name_list) # This randomizes the arrangement of names in the list
         print(random_name_generator) # Gives the randomized list to user
-
+        
 # This provided line is required at the end of a Python file to call the main() function.
 if __name__ == '__main__':
     main()
