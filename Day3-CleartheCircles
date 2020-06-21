@@ -2,8 +2,8 @@ import tkinter
 import time
 import random
 
-CANVAS_WIDTH = 300      # Width of drawing canvas in pixels
-CANVAS_HEIGHT = 300     # Height of drawing canvas in pixels
+CANVAS_WIDTH = 800      # Width of drawing canvas in pixels
+CANVAS_HEIGHT = 800     # Height of drawing canvas in pixels
 
 BRICK_WIDTH	= 30        # The width of each brick in pixels
 BRICK_HEIGHT = 12       # The height of each brick in pixels
