@@ -1,4 +1,4 @@
-from tkinter import tk
+from tkinter import *
 import time
 
 def main():
