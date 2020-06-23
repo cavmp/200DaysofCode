@@ -1,0 +1,90 @@
+from tkinter import *
+
+def timer_label(seconds_on, seconds_off, seconds_rest, number_sets):
+
+    seconds=[]
+
+    for i in range(int(seconds_on),-1,-1):
+        seconds.append('GET READY!: \n'+ str(i))
+    seconds.append('')
+
+    for i in range(int(number_sets)):
+        for j in range(int(seconds_off),-1,-1):
+                seconds.append('SET #: \n' + str(i) +'\n SECONDS REMAINING : \n'+ str(j))
+        seconds.append('')
+        for k in range(int(seconds_rest),-1,-1):
+            seconds.append('SET #: \n' + str(i) +'\n SECONDS REST : \n'+ str(k))
+        seconds.append('')
+
+    seconds.append('GOOD JOB!')
+
+    return seconds
+
+def return_entry():
+
+    seconds_off = e1.get()
+    seconds_rest = e2.get()
+    seconds_on = e3.get()
+    number_sets = e4.get()
+
+    texts=timer_label(seconds_on, seconds_off, seconds_rest, number_sets)
+
+    for i in texts:
+        if i:
+            root.after(1000, label5.config(text=i))
+            root.update()
+        else:
+            root.bell()
+
+root = Tk()
+root.title('HIIT Interval Timer')
+root.geometry("900x500")
+root.configure(background='white')
+root.resizable()
+
+countdown_label = Label(root, font=("times new roman", 90), text="COUNTDOWN")
+countdown_label.pack(side=TOP)
+
+workout_label = Label(root, font=("helvetica", 20), text="(FOR WORKOUTS)")
+workout_label.pack(side=TOP)
+
+frame1 = Frame(root)
+frame1.pack(side=TOP)
+label1 = Label(frame1, text="SECONDS ON", bg='white')
+label1.pack(side=LEFT)
+e1 = Entry(frame1, width=3)
+e1.pack(side=LEFT)
+label2 = Label(frame1, text="SECONDS OFF", bg='white')
+label2.pack(side=LEFT)
+e2 = Entry(frame1, width=3)
+e2.pack(side=LEFT)
+
+frame2 = Frame(root)
+frame2.pack(side=TOP)
+label3 = Label(frame2, text="SECONDS REST IN BETWEEN SETS", bg='white')
+label3.pack(side=LEFT)
+e3 = Entry(frame2, width=3)
+e3.pack(side=LEFT)
+
+frame3 = Frame(root)
+frame3.pack(side=TOP)
+label4 = Label(frame3, text='NUMBER OF SETS', bg='white')
+label4.pack(side=LEFT)
+e4 = Entry(frame3, width=3)
+e4.pack(side=LEFT)
+
+frame4 = Frame(root)
+frame4.pack(side=TOP)
+label5 = Label(frame4, text='TIME', height=5,  font=('Times New Roman', 40), bg='white')
+label5.pack(side=TOP)
+
+frame5= Frame(root)
+frame5.pack(side=BOTTOM)
+button3 = Button(frame5, text='Start', command=return_entry)
+button3.pack(side=LEFT)
+
+button4=Button(frame5, text='Quit', command=root.quit)
+button4.pack(side=LEFT)
+
+root.after(1000, None)
+mainloop()
