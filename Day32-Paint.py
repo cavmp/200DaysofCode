@@ -6,6 +6,7 @@ class Paint(object):
 
     def __init__(self):
         self.root = Tk()
+        self.root.title('Paint')
 
         self.canvas = Canvas(self.root, bg='white', width=800, height=700)
         self.canvas.grid(row=2, columnspan=5)
