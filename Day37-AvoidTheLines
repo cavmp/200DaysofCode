@@ -20,6 +20,14 @@ def main():
     # Makes the box
     box = canvas.create_rectangle(0, BOX_Y, BOX_WIDTH, CANVAS_HEIGHT - 20, fill='pink', outline='pink')
 
+    start_text = canvas.create_text(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2, fill='blue', font="System 30",
+                                    text='Click to start!')
+
+    while start_text in canvas.find_all():
+        canvas.bind("<ButtonRelease-1>", lambda e: canvas.delete(start_text))
+        canvas.update()
+        time.sleep(1 / 10.)
+
     game_over = False
     x_movespeed = 0
     y_movespeed = 7
