@@ -1,0 +1,98 @@
+import tkinter
+import time
+import random
+
+CANVAS_WIDTH = 600
+CANVAS_HEIGHT = 600
+BALL_SIZE = 55
+BOX_Y = CANVAS_HEIGHT - 40
+BOX_WIDTH = 70
+
+def main():
+    canvas = make_canvas(CANVAS_WIDTH, CANVAS_HEIGHT, 'Avoid the Lines')
+    # Makes the lines
+    balls = []
+    for i in range(10):
+        x = random.randint(1, 11) * BALL_SIZE
+        y = -random.randint(1, 20) * BALL_SIZE
+        ball = canvas.create_oval(x, y, BALL_SIZE + x, y, fill='black', outline='black')
+        balls.append(ball)
+    # Makes the box
+    box = canvas.create_rectangle(0, BOX_Y, BOX_WIDTH, CANVAS_HEIGHT - 20, fill='pink', outline='pink')
+
+    game_over = False
+    x_movespeed = 0
+    y_movespeed = 7
+    count = 0
+    while not game_over:
+        # Follows the mouse's location
+        mouse_x = canvas.winfo_pointerx()
+        canvas.moveto(box, mouse_x, BOX_Y)
+        if count == count + 1:
+            y_movespeed -= 1
+        for ball in balls:
+            if hit_left_wall(canvas, box):
+                canvas.moveto(box, 0, BOX_Y)
+            if hit_right_wall(canvas, box):
+                canvas.moveto(box, CANVAS_WIDTH - BOX_WIDTH, BOX_Y)
+            canvas.move(ball, x_movespeed, y_movespeed)
+            if hit_bottom_wall(canvas, ball):
+                x = random.randint(BALL_SIZE, CANVAS_WIDTH - BALL_SIZE)
+                y = random.randint(-CANVAS_HEIGHT, -BALL_SIZE)
+                canvas.moveto(ball, x, y)
+                count += 1
+        if hit_box(canvas, box):
+            game_over = True
+            canvas.create_text(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, font='Times 20 bold', fill='black', text="Game over \n"
+                                                                                     "You scored: {0}".format(count))
+        score = canvas.create_text(50, 30, font='Times 13', fill='black', text='Score {0}'.format(count))
+        canvas.update()
+        time.sleep(1/50)
+        canvas.delete(score)
+    while True:
+        time.sleep(4)
+        break
+
+def hit_box(canvas, box):
+    box_coords = canvas.coords(box)
+    x1 = box_coords[0]
+    y1 = box_coords[1]
+    x2 = box_coords[2]
+    y2 = box_coords[3]
+    results = canvas.find_overlapping(x1, y1, x2, y2)
+    return len(results) > 1
+
+def hit_left_wall(canvas, object):
+    return get_left_x(canvas, object) <= 0
+
+def hit_top_wall(canvas, object):
+    return get_top_y(canvas, object) <= 0
+
+def hit_right_wall(canvas, object):
+    return get_right_x(canvas, object) >= CANVAS_WIDTH
+
+def hit_bottom_wall(canvas, object):
+    return get_bottom_y(canvas, object) >= CANVAS_HEIGHT
+
+def get_left_x(canvas, object):
+    return canvas.coords(object)[0]
+
+def get_top_y(canvas, object):
+    return canvas.coords(object)[1]
+
+def get_right_x(canvas, object):
+    return canvas.coords(object)[2]
+
+def get_bottom_y(canvas, object):
+    return canvas.coords(object)[3]
+
+def make_canvas(width, height, title):
+    top = tkinter.Tk()
+    top.minsize(width=width, height=height)
+    top.title(title)
+    canvas = tkinter.Canvas(top, width=width + 1, height=height + 1)
+    canvas.pack()
+    return canvas
+
+if __name__ == '__main__':
+    main()
