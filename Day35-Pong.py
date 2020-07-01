@@ -50,9 +50,9 @@ def main():
 
         if hit_left_wall(canvas, ball) or hit_right_wall(canvas, ball):
             canvas.create_text(305, 390, font='System 40', text='GAME OVER')
-            text = "You scored: ",score
+            text = "You scored: {0}".format(score)
             canvas.create_text(305, 420, font='System, 20', text=text)
-
+            
 def hit_paddle(canvas, ball, paddle):
     paddle_coords = canvas.coords(paddle)
     x1 = paddle_coords[0]
