@@ -1,0 +1,66 @@
+from tkinter import *
+import random
+from tkinter import messagebox
+
+answers = ["cookies", "orange", "apple", "temporary", "freezing", "smart", "heavenly", "phone", "wish", "spark"]
+
+words = ["scokoei", "groane", "peapl", "rteprtmoay", "efzregni", "ramst", "veenhaly", "nohpe", "sihw", "rksap"]
+
+num = random.randrange(len(words))
+
+def default():
+    global words, answers, num
+    lbl.config(text=words[num])
+
+def res():
+    global words, answers, num
+    num = random.randrange(0, len(words), 1)
+    lbl.config(text=words[num])
+    e1.delete(0, END)
+
+
+def checkans():
+    global words, answers, num
+    var = e1.get()
+    if var == answers[num]:
+        messagebox.showinfo("Success", "This is a correct answer")
+        res()
+    else:
+        messagebox.showerror("Error", "This is not Correct")
+        e1.delete(0, END)
+
+root = Tk()
+root.geometry("600x400")
+root.title("Scramble Words Game")
+root.configure(background="#d9b38c")
+
+title = Label(root, font=('Verdana', 30, 'bold'), text='\nScramble Words Game', bg='#d9b38c')
+title.pack(side=TOP)
+
+Label(root, text='\n', bg="#d9b38c") .pack(side=TOP) # To add a space in between
+
+word_frame = Frame(root)
+word_frame.pack(side=TOP)
+instructions_label = Label(word_frame, text='Unscramble letters to form a word:', bg='#cc9966', font=('Verdana', 18))
+instructions_label.pack(side=LEFT)
+lbl = Label(word_frame, font=("Verdana", 18), bg='#c68c53')
+lbl.pack(side=LEFT)
+
+Label(root, text='\n', bg="#d9b38c") .pack(side=TOP) # To add a space in between
+
+ans1 = StringVar()
+e1 = Entry(root, font = ("Verdana", 16), textvariable=ans1, bg='#f3e5d8')
+e1.pack(ipady=1,ipadx=1)
+
+buttons_frame = Frame(root)
+buttons_frame.pack(side=TOP)
+btncheck = Button(buttons_frame, text = "Check", font = ("Verdana", 16), width=8,
+                  bg='#d9b38c', fg='green', relief=GROOVE, command=checkans)
+btncheck.pack(side=LEFT)
+
+btnreset = Button(buttons_frame, text="Skip", font=("Verdana", 16), width=8,
+                  bg="#d9b38c", fg="red", relief=GROOVE, command=res)
+btnreset.pack(side=LEFT)
+
+default()
+root.mainloop()
