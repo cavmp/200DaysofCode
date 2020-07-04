@@ -1,0 +1,34 @@
+import random
+from PIL import Image, ImageFilter
+
+def main():
+    correct_answer = ['The Lion King', 'The Notebook', 'Tangled', 'Bohemian Rhapsody', 'The Dictator', 'Burlesque',
+                      'That Awkward Moment']
+    pictures = ['images/tlk.jpg', 'images/tn.jpg', 'images/t.jpg', 'images/br.jpg', 'images/td.jpg', 'images/b.jpg',
+                'images/tam.jpg']
+    num = random.randrange(len(pictures))
+
+    level = 1
+    points = 100
+    radius = 22
+    image = (Image.open(pictures[num]))
+    while True:
+        radius -= 4
+        blur = image.filter(ImageFilter.GaussianBlur(radius=radius))
+        blur.show()
+        user_answer = input('Any guesses for which movie this might be? ')
+        if correct_answer[num] != user_answer:
+            level += 1
+            points -= 5
+            print("Let's move on to the next level and maybe you'll have better luck. \nOn to level", level, "!")
+        else:
+            print('Congratulations! You earned', points, 'points')
+            break
+    play = input("Want to play again? (Type 'yes' or 'no') ")
+    if play == 'yes':
+        main()
+    if play == 'no':
+        print("Thank you for playing 'Guess & Unblur the Movie Poster'!")
+
+if __name__ == '__main__':
+    main()
