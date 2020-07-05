@@ -1,0 +1,46 @@
+def main():
+    user = input("Do you want to add, subtract, multiply or divide? ")
+    if user == "add":
+        add()
+    if user == "subtract":
+        subtract()
+
+    if user == "multiply":
+        multiply()
+    if user == "divide":
+        divide()
+    main()
+
+def add():
+    print("This program add one number from another.") # This gives the user the purpose of the code
+    num1 = float(input("Enter first number: ")) # This enables the user to enter the first number
+    num2 = float(input("Enter second number: ")) # User enters the second number
+    total = num1 + num2 # The 'total' function adds both numbers given by the user
+    print("The result is " + str(total)) # This function allows the user to see the output in the terminal
+
+def subtract():
+    print("This program subtracts one number from another.") # This gives the user the purpose of the code
+    num1 = float(input("Enter first number: ")) # This enables the user to enter the first number
+    num2 = float(input("Enter second number: ")) # User enters the second number
+    total = num1 - num2 # The 'total' function subtracts both numbers given by the user
+    print("The result is " + str(total)) # This function allows the user to see the output in the terminal
+
+def multiply():
+    print("This program multiplies one number from another.") # This gives the user the purpose of the code
+    num1 = float(input("Enter first number: ")) # This enables the user to enter the first number
+    num2 = float(input("Enter second number: ")) # User enters the second number
+    total = num1 * num2 # The 'total' function multiplies both numbers given by the user
+    print("The result is " + str(total)) # This function allows the user to see the output in the terminal
+
+def divide():
+    print("This program divides one number from another.") # This gives the user the purpose of the code
+    num1 = float(input("Enter first number: ")) # This enables the user to enter the first number
+    num2 = float(input("Enter second number: ")) # User enters the second number
+    total = num1 / num2 # The 'total' function divides both numbers given by the user
+    print("The result is " + str(total)) # This function allows the user to see the output in the terminal
+
+
+# This provided line is required at the end of a Python file
+# to call the main() function.
+if __name__ == '__main__':
+    main()
