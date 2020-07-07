@@ -1,0 +1,90 @@
+from tkinter import *
+from PIL import Image, ImageTk, ImageFilter
+
+DEFAULT_FILE = 'images/sunflower.jpg'
+WIDTH = 800
+HEIGHT = 700
+radius = 0 # starting radius
+
+class Filter(object):
+
+        def __init__(self):
+            self.root = Tk()
+            self.root.title('Filter')
+
+            self.canvas = Canvas(self.root, bg='white', width=WIDTH, height=HEIGHT)
+            self.canvas.grid(row=2, columnspan=8)
+
+            self.blur_button = Button(self.root, text='BLUR', command=self.blur)
+            self.blur_button.grid(row=1, column=0)
+
+            self.contour_button = Button(self.root, text='CONTOUR', command=self.contour)
+            self.contour_button.grid(row=1, column=1)
+
+            self.detail_button = Button(self.root, text='DETAIL', command=self.detail)
+            self.detail_button.grid(row=1, column=2)
+
+            self.edgeenhance_button = Button(self.root, text='EDGE-ENHANCE', command=self.edgeenhance)
+            self.edgeenhance_button.grid(row=1, column=3)
+
+            self.emboss_button = Button(self.root, text='EMBOSS', command=self.emboss)
+            self.emboss_button.grid(row=1, column=4)
+
+            self.findedges_button = Button(self.root, text='FIND EDGES', command=self.findedges)
+            self.findedges_button.grid(row=1, column=5)
+
+            self.smooth_button = Button(self.root, text='SMOOTH', command=self.smooth)
+            self.smooth_button.grid(row=1, column=6)
+
+            self.sharpen_button = Button(self.root, text='SHARPEN BUTTON', command=self.sharpen)
+            self.sharpen_button.grid(row=1, column=7)
+
+            self.image = ImageTk.PhotoImage(Image.open(DEFAULT_FILE))
+            self.canvas.create_image(WIDTH/2, HEIGHT/2, anchor=CENTER, image=self.image)
+
+            self.root.mainloop()
+
+        def blur(self):
+            global radius
+            radius += 1
+            im = (Image.open(DEFAULT_FILE))
+            blur = im.filter(ImageFilter.GaussianBlur(radius=radius))
+            blur.show()
+
+        def contour(self):
+            im = (Image.open(DEFAULT_FILE))
+            contour = im.filter(ImageFilter.CONTOUR)
+            contour.show()
+
+        def detail(self):
+            im = (Image.open(DEFAULT_FILE))
+            detail = im.filter(ImageFilter.DETAIL)
+            detail.show()
+
+        def edgeenhance(self):
+            im = (Image.open(DEFAULT_FILE))
+            edgeenhance = im.filter(ImageFilter.EDGE_ENHANCE)
+            edgeenhance.show()
+
+        def emboss(self):
+            im = (Image.open(DEFAULT_FILE))
+            emboss = im.filter(ImageFilter.EMBOSS)
+            emboss.show()
+
+        def findedges(self):
+            im = (Image.open(DEFAULT_FILE))
+            findedges = im.filter(ImageFilter.FIND_EDGES)
+            findedges.show()
+
+        def smooth(self):
+            im = (Image.open(DEFAULT_FILE))
+            smooth = im.filter(ImageFilter.SMOOTH)
+            smooth.show()
+
+        def sharpen(self):
+            im = (Image.open(DEFAULT_FILE))
+            sharpen = im.filter(ImageFilter.SHARPEN)
+            sharpen.show()
+
+if __name__ == '__main__':
+        Filter()
