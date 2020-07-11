@@ -1,5 +1,5 @@
 def main():
-    dna = "ATGCCAATT"
+    dna = input("DNA Genetic Code: (only input letters T, A, G, C): ")
     m_rna = dna_to_rna(dna)
     print(m_rna)
 
