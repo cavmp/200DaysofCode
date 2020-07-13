@@ -47,3 +47,4 @@ class MotivateMe:
 root = Tk()
 my_gui = MotivateMe(root)
 root.mainloop()
+
