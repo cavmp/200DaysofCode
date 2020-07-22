@@ -54,6 +54,10 @@ def increasespeed():
     global speed
     speed += 1
 
+def decreasespeed():
+    global speed
+    speed -= 1
+
 def isCollision(t1, t2):
     d = math.sqrt(math.pow(t1.xcor()-t2.xcor(), 2) + math.pow(t1.ycor()-t2.ycor(), 2))
     if d < 20:
@@ -65,7 +69,7 @@ t.listen()
 t.onkey(turnleft, 'Left')
 t.onkey(turnright, 'Right')
 t.onkey(increasespeed, 'Up')
-
+t.onkey(decreasespeed, 'Down')
 
 while True:
     player.forward(speed)
