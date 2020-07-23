@@ -1,0 +1,40 @@
+import turtle as t
+import time
+
+t.speed(10)
+t.setup
+t.pensize(12)
+
+# Black ring
+t.pencolor('black')
+t.circle(80)
+
+# Blue ring
+t.penup()
+t.goto(-200, 0)
+t.pendown()
+t.pencolor('blue')
+t.circle(80)
+
+# Red ring
+t.penup()
+t.goto(200, 0)
+t.pendown()
+t.pencolor('red')
+t.circle(80)
+
+# Yellow ring
+t.penup()
+t.goto(-100, -100)
+t.pendown()
+t.pencolor('yellow')
+t.circle(80)
+
+# Yellow ring
+t.penup()
+t.goto(100, -100)
+t.pendown()
+t.pencolor('green')
+t.circle(80)
+
+time.sleep(10) # Lets the user see the final product by pausing for 10 seconds
