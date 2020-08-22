@@ -30,7 +30,6 @@ def drawBarCode(height):
         #textSize(10)
         text(digit,marginLeft+i*8,marginTop+20+height)
                 
-
 def setup():
     strokeWeight(12)
     size(200,200)
