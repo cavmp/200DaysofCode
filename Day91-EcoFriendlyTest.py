@@ -2,7 +2,7 @@ from tkinter import *
 
 root = Tk()
 root.geometry('600x750')
-root.title('Mad Libs Game')
+root.title('How Eco-Friendly Are You?')
 
 eco_score = 0
 
