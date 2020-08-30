@@ -10,7 +10,7 @@ def main():
     print(' > Option 4: Space Invader')
     print(' > Option 5: Exit\n')
 
-    option = input('Choose an option between 1 and 3: ')
+    option = input('Choose an option between 1 and 5: ')
     if option == "1":
         animate_rocket()
     elif option == "2":
